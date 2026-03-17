@@ -1,39 +1,57 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 // 실시간 시계 컴포넌트 선언
 export function ClockDisplay() {
   const [time, setTime] = useState<Date | null>(null);
+  const [isUTC, setIsUTC] = useState(false);
 
-  // 컴포넌트 마운트 시 시간 설정 및 1초 단위 타이머 등록
+  // 컴포넌트 마운트 시 시간 설정 및 타이머 등록
   useEffect(() => {
     setTime(new Date());
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // 하이드레이션 에러 방지를 위한 초기 빈 상태
   if (!time) return <div className="h-40" />;
 
-  // 시, 분, 초 포맷팅 함수
-  const formatNum = (value: number) => value.toString().padStart(2, "0");
+  // 현재 설정된 타임존에 따른 시간 계산
+  const displayTime = isUTC ? new Date(time.getTime() + time.getTimezoneOffset() * 60000) : time;
+  const formatNum = (v: number) => v.toString().padStart(2, "0");
 
   return (
-    <div className="flex flex-col items-center rounded-3xl bg-zinc-900 p-10 shadow-2xl">
-      <h2 className="font-heading text-2xl tracking-widest text-zinc-400 mb-4">
-        LOCAL TIME
-      </h2>
-      
-      {/* 숫자에 font-clock 적용 (Orbitron) */}
-      <div className="font-clock text-7xl md:text-9xl font-bold text-white tracking-[0.2em] shadow-black drop-shadow-lg">
-        {formatNum(time.getHours())}:{formatNum(time.getMinutes())}:{formatNum(time.getSeconds())}
+    <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center rounded-3xl bg-zinc-950 p-10 shadow-2xl dark:bg-zinc-900 ring-1 ring-white/10">
+        <h2 className="font-heading text-sm tracking-[0.3em] text-zinc-500 mb-6 font-bold">
+          {isUTC ? "UNIVERSAL TIME" : "KOREA STANDARD TIME"}
+        </h2>
+        
+        {/* 숫자에 font-clock 적용 (Orbitron) */}
+        <div className="font-clock text-6xl md:text-8xl font-bold text-white tracking-widest drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+          {formatNum(displayTime.getHours())}:{formatNum(displayTime.getMinutes())}:{formatNum(displayTime.getSeconds())}
+        </div>
       </div>
-      
-      {/* 내용에 font-sans 적용 (Pretendard -> Noto Sans KR 백업) */}
-      <p className="font-sans text-lg text-zinc-500 mt-6">
-        시간은 금입니다. 소중한 하루 보내세요!
-      </p>
+
+      {/* 타임존 전환 버튼 */}
+      <div className="flex gap-2 p-1 bg-zinc-200 dark:bg-zinc-800 rounded-xl">
+        <Button 
+          variant={!isUTC ? "secondary" : "ghost"} 
+          className="rounded-lg px-6 font-semibold"
+          onClick={() => setIsUTC(false)}
+        >
+          KST
+        </Button>
+        <Button 
+          variant={isUTC ? "secondary" : "ghost"} 
+          className="rounded-lg px-6 font-semibold"
+          onClick={() => setIsUTC(true)}
+        >
+          UTC
+        </Button>
+      </div>
     </div>
   );
 }
+
