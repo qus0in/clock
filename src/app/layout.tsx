@@ -5,13 +5,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://clock.qus0in.dev/"),
   title: "ClockBeat",
-  description: "Next.js Clock Application",
+  description: "심장 박동을 담은 역동적인 시계",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
     title: "ClockBeat",
-    description: "Next.js Clock Application with Dynamic ECG Wave",
+    description: "심장 박동을 담은 역동적인 시계",
     url: "https://clock.qus0in.dev/",
     siteName: "ClockBeat",
     images: [
