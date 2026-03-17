@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://your-cloudflare-worker-url.com"),
   title: "Clock Project",
   description: "Next.js Clock Application",
   icons: {
