@@ -35,6 +35,11 @@ export function ClockDisplay() {
           {isUTC ? "UNIVERSAL TIME" : "KOREA STANDARD TIME"}
         </h2>
         
+        {/* 한글 날짜 표시 (연월일) */}
+        <div className="font-heading text-lg font-bold text-foreground mb-4 opacity-80 tracking-widest md:text-2xl md:mb-6">
+          {displayTime.getFullYear()}년 {displayTime.getMonth() + 1}월 {displayTime.getDate()}일
+        </div>
+
         {/* 시간 표시부 */}
         <div className="font-clock text-4xl font-bold tracking-tighter text-foreground transition-colors sm:text-7xl md:text-8xl md:tracking-widest dark:text-white dark:drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
           {formatNum(displayTime.getHours())}:{formatNum(displayTime.getMinutes())}:{formatNum(displayTime.getSeconds())}
