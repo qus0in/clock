@@ -38,8 +38,8 @@ export function ClockDisplay() {
 
   return (
     <div className="flex w-full flex-col items-center gap-6 px-4 md:gap-10">
-      {/* 테마 연동 카드 */}
-      <div className="relative flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] bg-card p-10 shadow-2xl border-8 border-zinc-200 transition-colors duration-500 md:p-16 dark:bg-zinc-950 dark:border-zinc-800 dark:shadow-[0_0_60px_-15px_rgba(255,255,255,0.1)]">
+      {/* 글래스모피즘 스타일의 시계 카드 */}
+      <div className="relative flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] border border-white/20 bg-white/30 p-10 backdrop-blur-xl transition-all duration-500 md:p-16 dark:border-white/10 dark:bg-black/30">
         
         {/* 애니메이션 한 사이클(2초)이 끝날 때마다 새로운 가우시안 파형으로 갱신 */}
         <ECGWave key={Math.floor(time.getSeconds() / 2)} />
