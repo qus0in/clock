@@ -5,6 +5,24 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Clock Project",
   description: "Next.js Clock Application",
+  icons: {
+    icon: "/favicon.svg",
+  },
+  openGraph: {
+    title: "Clock Project",
+    description: "Next.js Clock Application with Dynamic ECG Wave",
+    url: "https://your-cloudflare-worker-url.com",
+    siteName: "Clock Project",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Clock Project OG Image",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
