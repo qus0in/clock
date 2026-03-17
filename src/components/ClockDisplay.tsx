@@ -16,9 +16,11 @@ export function ClockDisplay() {
 
     // 저장된 타임존 설정 불러오기
     const savedTimeZone = localStorage.getItem("clock-timezone");
-    if (savedTimeZone === "utc") setIsUTC(true);
+    if (savedTimeZone === "utc") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setIsUTC(true);
+    }
     
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTime(new Date());
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
