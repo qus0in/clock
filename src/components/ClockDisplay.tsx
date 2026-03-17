@@ -35,9 +35,10 @@ export function ClockDisplay() {
           {isUTC ? "UNIVERSAL TIME" : "KOREA STANDARD TIME"}
         </h2>
         
-        {/* 한글 날짜 표시 (연월일) */}
+        {/* 한글 날짜 및 요일 표시 */}
         <div className="font-heading text-lg font-bold text-foreground mb-4 opacity-80 tracking-widest md:text-2xl md:mb-6">
-          {displayTime.getFullYear()}년 {displayTime.getMonth() + 1}월 {displayTime.getDate()}일
+          {displayTime.getFullYear()}년 {displayTime.getMonth() + 1}월 {displayTime.getDate()}일 (
+          {['일', '월', '화', '수', '목', '금', '토'][displayTime.getDay()]})
         </div>
 
         {/* 시간 표시부 */}
