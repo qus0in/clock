@@ -48,17 +48,24 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@keyframes soundwave {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(4); opacity: 0; }
+@keyframes ecg-dash {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
 }
 
-.animate-soundwave {
-  animation: soundwave 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+@keyframes ecg-pulse {
+  0%, 100% { opacity: 0.2; filter: blur(0px); }
+  50% { opacity: 1; filter: blur(0.5px); }
 }
 
-.delay-700 { animation-delay: 0.7s; }
-.delay-1400 { animation-delay: 1.4s; }
+.animate-ecg {
+  stroke-dasharray: 100;
+  animation: ecg-dash 2s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: ecg-pulse 2s ease-in-out infinite;
+}
 
 
 @theme inline {

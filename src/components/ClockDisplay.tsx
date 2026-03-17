@@ -26,17 +26,27 @@ export function ClockDisplay() {
       {/* 테마 연동 카드 */}
       <div className="relative flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] bg-card p-10 shadow-2xl border-8 border-zinc-200 transition-colors duration-500 md:p-16 dark:bg-zinc-950 dark:border-zinc-800 dark:shadow-[0_0_60px_-15px_rgba(255,255,255,0.1)]">
         
-        {/* 음파 파장 애니메이션 요소 (Soundwave Ripple) */}
-        <div className="absolute top-8 flex items-center justify-center">
-          <div className="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10" />
-          {/* 다중 레이어 파동 */}
-          <div className="absolute h-2 w-2 rounded-full bg-blue-400 animate-soundwave" />
-          <div className="absolute h-2 w-2 rounded-full bg-blue-400 animate-soundwave delay-700" />
-          <div className="absolute h-2 w-2 rounded-full bg-blue-400 animate-soundwave delay-1400" />
+        {/* 가로 심박동 파형 애니메이션 (ECG/EKG Wave) */}
+        <div className="absolute top-6 w-full flex flex-col items-center gap-1 opacity-70 animate-pulse-glow">
+          <svg
+            viewBox="0 0 200 20"
+            className="w-32 h-6 text-red-500 drop-shadow-[0_0_5px_rgba(239,68,68,0.5)] dark:text-red-400"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {/* 심박동 베이스 라인 및 스파이크 */}
+            <path
+              className="animate-ecg"
+              d="M0 10 h80 l5 -8 l5 15 l5 -12 l5 5 h100"
+            />
+          </svg>
         </div>
 
         {/* 가운데 정렬된 타임존 가이드 텍스트 */}
-        <h2 className="font-heading text-xs tracking-[0.4em] text-muted-foreground mt-6 mb-4 font-bold text-center w-full md:text-sm md:mb-10">
+        <h2 className="font-heading text-xs tracking-[0.4em] text-muted-foreground mt-8 mb-4 font-bold text-center w-full md:text-sm md:mb-10">
           {isUTC ? "UNIVERSAL TIME" : "KOREA STANDARD TIME"}
         </h2>
         
