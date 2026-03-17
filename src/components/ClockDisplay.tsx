@@ -55,8 +55,11 @@ export function ClockDisplay() {
           {['일', '월', '화', '수', '목', '금', '토'][displayTime.getDay()]})
         </div>
 
-        {/* 시간 표시부 */}
-        <div className="font-clock text-4xl font-bold tracking-tighter text-foreground transition-colors sm:text-7xl md:text-8xl md:tracking-widest dark:text-white dark:drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+        {/* 시간 표시부: 타임존 전환 시 부드러운 전환 효과 적용 */}
+        <div 
+          key={isUTC ? "utc" : "kst"}
+          className="font-clock text-4xl font-bold tracking-tighter text-foreground transition-all duration-500 animate-in fade-in zoom-in-95 sm:text-7xl md:text-8xl md:tracking-widest dark:text-white dark:drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+        >
           {formatNum(displayTime.getHours())}:{formatNum(displayTime.getMinutes())}:{formatNum(displayTime.getSeconds())}
         </div>
       </div>
