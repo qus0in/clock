@@ -4,22 +4,22 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://your-cloudflare-worker-url.com"),
-  title: "Clock Project",
+  title: "ClockBeat",
   description: "Next.js Clock Application",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "Clock Project",
+    title: "ClockBeat",
     description: "Next.js Clock Application with Dynamic ECG Wave",
     url: "https://your-cloudflare-worker-url.com",
-    siteName: "Clock Project",
+    siteName: "ClockBeat",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Clock Project OG Image",
+        alt: "ClockBeat OG Image",
       },
     ],
     type: "website",
