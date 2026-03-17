@@ -40,9 +40,9 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Orbitron';
-  src: url('/fonts/Orbitron-Bold.woff2') format('woff2');
-  font-weight: 700;
+  font-family: 'ClockIcons';
+  src: url('/fonts/ClockIcons.woff2') format('woff2');
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -74,7 +74,7 @@
   /* 폰트 적용 */
   --font-sans: 'Pretendard', 'Noto Sans KR', sans-serif;
   --font-heading: 'Paperlogy', sans-serif;
-  --font-clock: 'Orbitron', monospace;
+  --font-clock: 'ClockIcons', monospace;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
