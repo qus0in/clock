@@ -3,7 +3,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-cloudflare-worker-url.com"),
+  metadataBase: new URL("https://clock.qus0in.dev/"),
   title: "ClockBeat",
   description: "Next.js Clock Application",
   icons: {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ClockBeat",
     description: "Next.js Clock Application with Dynamic ECG Wave",
-    url: "https://your-cloudflare-worker-url.com",
+    url: "https://clock.qus0in.dev/",
     siteName: "ClockBeat",
     images: [
       {
