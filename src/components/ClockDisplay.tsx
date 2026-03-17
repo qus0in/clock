@@ -38,8 +38,8 @@ export function ClockDisplay() {
 
   return (
     <div className="flex w-full flex-col items-center gap-6 px-4 md:gap-10">
-      {/* 글래스모피즘 스타일의 시계 카드 */}
-      <div className="relative flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] border border-white/20 bg-white/30 p-10 backdrop-blur-xl transition-all duration-500 md:p-16 dark:border-white/10 dark:bg-black/30">
+      {/* 클레이모피즘 스타일의 시계 카드 */}
+      <div className="relative flex w-full max-w-2xl flex-col items-center clay-card p-10 transition-all duration-500 md:p-16">
         
         {/* 애니메이션 한 사이클(2초)이 끝날 때마다 새로운 가우시안 파형으로 갱신 */}
         <ECGWave key={Math.floor(time.getSeconds() / 2)} />
@@ -64,24 +64,24 @@ export function ClockDisplay() {
         </div>
       </div>
 
-      {/* 타임존 전환 버튼부: 글래스모피즘 및 슬라이딩 애니메이션 적용 */}
-      <div className="relative flex gap-1 p-1 bg-white/20 dark:bg-black/20 backdrop-blur-md rounded-xl border border-white/20 dark:border-white/10 w-fit">
-        {/* 활성 상태 표시 배경 슬라이더 (글래스모피즘 반영) */}
+      {/* 타임존 전환 버튼부: 클레이모피즘 및 슬라이딩 애니메이션 적용 */}
+      <div className="relative flex gap-1 p-1 clay-panel rounded-xl w-fit">
+        {/* 활성 상태 표시 배경 슬라이더 (클레이모피즘 반영) */}
         <div 
-          className="absolute top-1 bottom-1 left-1 bg-white/40 dark:bg-white/10 rounded-lg transition-all duration-300 ease-in-out"
+          className="absolute top-1 bottom-1 left-1 clay-btn-active rounded-lg transition-all duration-300 ease-in-out"
           style={{ 
             width: "calc(50% - 4px)", 
             transform: `translateX(${isUTC ? "100%" : "0%"})` 
           }}
         />
         <button 
-          className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${!isUTC ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+          className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${!isUTC ? "text-primary dark:text-white" : "text-muted-foreground hover:text-foreground"}`}
           onClick={() => toggleTimeZone(false)}
         >
           KST
         </button>
         <button 
-          className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${isUTC ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+          className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${isUTC ? "text-primary dark:text-white" : "text-muted-foreground hover:text-foreground"}`}
           onClick={() => toggleTimeZone(true)}
         >
           UTC

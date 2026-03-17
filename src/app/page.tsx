@@ -8,10 +8,7 @@ export const dynamic = "force-dynamic";
 export default function Home() {
   // 메인 화면 렌더링
   return (
-    <div className="relative flex min-h-screen min-w-[320px] overflow-hidden flex-col items-center justify-center bg-background p-4">
-      {/* 배경 데코레이션: 글래스모피즘 효과 극대화 */}
-      <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-blue-500/10 blur-[100px] dark:bg-blue-900/20" />
-      <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-red-500/10 blur-[100px] dark:bg-red-900/20" />
+    <div className="relative flex min-h-screen min-w-[320px] overflow-hidden flex-col items-center justify-center transition-colors clay-bg p-4">
       
       {/* 테마 전환 버튼 - 우측 상단 고정 */}
       <div className="absolute top-8 right-8 z-50">
@@ -20,8 +17,8 @@ export default function Home() {
 
       <ClockDisplay />
 
-      {/* 푸터: 우측 하단에 고정된 글래스모피즘 GitHub 링크 */}
-      <footer className="fixed bottom-6 right-6 z-50 rounded-full border border-white/20 bg-white/20 px-4 py-2 backdrop-blur-md transition-all hover:bg-white/30 dark:border-white/10 dark:bg-black/20 dark:hover:bg-black/30">
+      {/* 푸터: 우측 하단에 고정된 클레이모피즘 GitHub 링크 */}
+      <footer className="fixed bottom-6 right-6 z-50 rounded-full px-4 py-2 transition-all clay-btn hover:scale-105">
         <a 
           href="https://github.com/qus0in" 
           target="_blank" 
