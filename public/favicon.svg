@@ -1,8 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <rect width="100" height="100" rx="30" fill="#ffffff" />
-  <circle cx="50" cy="50" r="35" fill="#f8fafc" stroke="#e2e8f0" stroke-width="6" />
-  <!-- 추상화된 귀여운 시계 바늘 (미니멀하게) -->
-  <path d="M 50 30 L 50 50 L 65 60" fill="none" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-  <!-- 귀여운 심박 파형 (곡선 처리) -->
-  <path d="M 15 55 Q 25 55 30 55 L 35 45 L 45 70 L 55 30 L 65 65 L 75 50 Q 80 50 85 50" fill="none" stroke="#ef4444" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- 미니멀한 검은색 심박 파형 (가운데 정렬) -->
+  <path d="M 15 50 h 20 l 5 -15 l 10 30 l 8 -40 l 12 50 l 8 -25 l 5 0 h 5" fill="none" stroke="#09090b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
