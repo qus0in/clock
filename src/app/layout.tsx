@@ -2,18 +2,22 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
+const APP_NAME = "ClockBeat";
+const APP_DESCRIPTION = "Can You Feel My ClockBeat?";
+const APP_URL = "https://clock.qus0in.dev/";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://clock.qus0in.dev/"),
-  title: "ClockBeat",
-  description: "심장 박동을 담은 역동적인 시계",
+  metadataBase: new URL(APP_URL),
+  title: APP_NAME,
+  description: APP_DESCRIPTION,
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "ClockBeat",
-    description: "심장 박동을 담은 역동적인 시계",
-    url: "https://clock.qus0in.dev/",
-    siteName: "ClockBeat",
+    title: APP_NAME,
+    description: APP_DESCRIPTION,
+    url: APP_URL,
+    siteName: APP_NAME,
     images: [
       {
         url: "/og-image.png",
