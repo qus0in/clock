@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export default function Home() {
   // 메인 화면 렌더링
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-background p-4">
+    <div className="relative flex min-h-screen min-w-[320px] flex-col items-center justify-center bg-background p-4">
       {/* 테마 전환 버튼 - 우측 상단 고정 */}
       <div className="absolute top-8 right-8">
         <ModeToggle />
