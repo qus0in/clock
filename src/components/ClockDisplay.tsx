@@ -27,7 +27,7 @@ export function ClockDisplay() {
       <div className="relative flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] bg-card p-10 shadow-2xl border-8 border-zinc-200 transition-colors duration-500 md:p-16 dark:bg-zinc-950 dark:border-zinc-800 dark:shadow-[0_0_60px_-15px_rgba(255,255,255,0.1)]">
         
         {/* 강화된 가로 심박동 파형 (ECG with P/QRS/T Waves) */}
-        <div className="absolute top-4 w-full flex flex-col items-center opacity-80 animate-pulse-glow">
+        <div className="absolute top-4 w-full flex flex-col items-center opacity-60 animate-pulse-glow">
           <svg
             viewBox="0 0 200 40"
             className="w-48 h-12 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)] dark:text-red-400"
@@ -37,18 +37,19 @@ export function ClockDisplay() {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {/* 심박동의 기하학적 파형: 잔파동 -> 급격한 수직 상승/하강 -> 잔파동 */}
+            {/* 심박동의 기하학적 파형 */}
             <path
               className="animate-ecg"
               d="M0 20 h60 q5 -4 10 0 h5 l4 8 l6 -30 l6 35 l4 -13 h5 q5 5 10 0 h80"
               stroke="url(#ecg-gradient)"
             />
-            {/* 중앙 강조 효과를 위한 그라데이션 필터 정의 (컴포넌트 내 삽입) */}
+            {/* 중앙 강조 효과를 위한 그라데이션 필터: 진한 구간 확장 */}
             <defs>
               <linearGradient id="ecg-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
-                <stop offset="50%" stopColor="currentColor" stopOpacity="1" />
-                <stop offset="100%" stopColor="currentColor" stopOpacity="0.2" />
+                <stop offset="0%" stopColor="currentColor" stopOpacity="0.1" />
+                <stop offset="30%" stopColor="currentColor" stopOpacity="1" />
+                <stop offset="70%" stopColor="currentColor" stopOpacity="1" />
+                <stop offset="100%" stopColor="currentColor" stopOpacity="0.1" />
               </linearGradient>
             </defs>
           </svg>
