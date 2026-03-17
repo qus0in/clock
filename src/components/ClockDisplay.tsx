@@ -41,22 +41,28 @@ export function ClockDisplay() {
         </div>
       </div>
 
-      {/* 버튼 디자인 유지 */}
-      <div className="flex gap-1 p-1 bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
-        <Button 
-          variant={!isUTC ? "secondary" : "ghost"} 
-          className="h-10 rounded-lg px-6 font-bold text-xs md:text-sm"
+      {/* 타임존 전환 버튼부: 슬라이딩 애니메이션 적용 */}
+      <div className="relative flex gap-1 p-1 bg-zinc-100 dark:bg-zinc-800/50 rounded-xl border border-zinc-200 dark:border-zinc-800 w-fit">
+        {/* 활성 상태 표시 배경 슬라이더 */}
+        <div 
+          className="absolute top-1 bottom-1 left-1 bg-white dark:bg-zinc-700 rounded-lg shadow-sm transition-all duration-300 ease-in-out"
+          style={{ 
+            width: "calc(50% - 4px)", 
+            transform: `translateX(${isUTC ? "100%" : "0%"})` 
+          }}
+        />
+        <button 
+          className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${!isUTC ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
           onClick={() => setIsUTC(false)}
         >
           KST
-        </Button>
-        <Button 
-          variant={isUTC ? "secondary" : "ghost"} 
-          className="h-10 rounded-lg px-6 font-bold text-xs md:text-sm"
+        </button>
+        <button 
+          className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${isUTC ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
           onClick={() => setIsUTC(true)}
         >
           UTC
-        </Button>
+        </button>
       </div>
     </div>
   );
