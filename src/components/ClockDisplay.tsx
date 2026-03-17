@@ -27,8 +27,8 @@ export function ClockDisplay() {
       {/* 테마 연동 카드 */}
       <div className="relative flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] bg-card p-10 shadow-2xl border-8 border-zinc-200 transition-colors duration-500 md:p-16 dark:bg-zinc-950 dark:border-zinc-800 dark:shadow-[0_0_60px_-15px_rgba(255,255,255,0.1)]">
         
-        {/* 가우시안 분포가 적용된 동적 심박 파형 모듈 */}
-        <ECGWave key={time.getSeconds()} />
+        {/* 애니메이션 한 사이클(2초)이 끝날 때마다 새로운 가우시안 파형으로 갱신 */}
+        <ECGWave key={Math.floor(time.getSeconds() / 2)} />
 
         {/* 가운데 정렬된 타임존 가이드 텍스트 */}
         <h2 className="font-heading text-xs tracking-[0.4em] text-muted-foreground mt-8 mb-4 font-bold text-center w-full md:text-sm md:mb-10">
