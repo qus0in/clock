@@ -1,0 +1,6 @@
+.next/
+out/
+.open-next/
+node_modules/
+build/
+.wrangler/
