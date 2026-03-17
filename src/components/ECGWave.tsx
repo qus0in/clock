@@ -12,16 +12,17 @@ const gaussian = (mean: number, stdev: number) => {
 
 // 심박동 파형(ECG) 컴포넌트 선언
 export function ECGWave() {
-  // 렌더링될 때마다(2초마다) 생성되며, 시작과 끝은 항상 y=20에서 일치함
+  // 렌더링될 때마다(2초마다) 생성되며, 베이스 진폭 확보 후 미세 변동 적용
   const pathData = useMemo(() => {
-    const q = gaussian(6, 1.0); // Q파 깊이
-    const r = gaussian(-32, 3.0); // R파 높이 (메인 진폭 강화)
-    const s = gaussian(38, 3.0); // S파 깊이
+    // 공통 부분(Base)까지는 확실히 뻗고 그 뒤에 세기(Variation)가 바뀜
+    const q = 5 + Math.abs(gaussian(0, 2));   // 최소 깊이 5 + 변동
+    const r = -28 - Math.abs(gaussian(0, 10)); // 최소 높이 -28 + 변동 (가장 높은 피크)
+    const s = 32 + Math.abs(gaussian(0, 10)); // 최소 깊이 32 + 변동 (가장 낮은 피크)
     
-    // 항상 y=20으로 복귀하기 위한 보정값 (q+r+s+j = 0)
+    // 항상 y=20(기본선)으로 복귀하기 위한 보정값
     const j = -(q + r + s);
 
-    // M0 20 (시작) -> h70 (안정된 시작 기선) -> 파동 -> h90 (안정된 끝 기선)
+    // 심전도 경로: 기선(70) -> P파(q5-4) -> QRS컴플렉스(l4-l6-l6-l4) -> 기선(90)
     return `M0 20 h70 q5 -4 10 0 h5 l4 ${q.toFixed(1)} l6 ${r.toFixed(1)} l6 ${s.toFixed(1)} l4 ${j.toFixed(1)} h5 q5 5 10 0 h90`;
   }, []);
 
