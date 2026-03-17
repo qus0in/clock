@@ -47,3 +47,9 @@ pnpm generate:og
 pnpm dev
 ```
 브라우저에서 `http://localhost:3000` 접속 후 로컬 렌더링을 확인하세요.
+
+## 🤖 AI Agent Workflow & Skills
+
+본 프로젝트는 AI 코딩 에이전트(예: AI 코딩 어시스턴트)가 개발 원칙을 준수하며 관리할 수 있도록 스킬 및 워크플로우 셋이 구축되어 있습니다.
+- **Workflow** (`.agents/workflows`): 코드 배포(`/deploy`) 및 원격 동기화(`/sync`) 등 명시적인 작업 가이드가 존재합니다.
+- **Skills** (`.agents/skills`): UI 컴포넌트 추가 시의 클레이모피즘(`design-system`), 하이드레이션과 FOUT 방지를 다루는 `nextjs-optimization`, 그리고 ESLint와 묶어서 관리되는 `deployment` 설정 규칙들을 사전에 정의해 뒀습니다.
