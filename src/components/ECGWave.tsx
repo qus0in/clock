@@ -12,14 +12,17 @@ const gaussian = (mean: number, stdev: number) => {
 
 // 심박동 파형(ECG) 컴포넌트 선언
 export function ECGWave() {
-  // 렌더링될 때마다(시계가 틱할 때마다) 조금씩 다른 파형 생성
+  // 렌더링될 때마다(2초마다) 생성되며, 시작과 끝은 항상 y=20에서 일치함
   const pathData = useMemo(() => {
-    const q = gaussian(8, 1.5).toFixed(1); // Q파 깊이
-    const r = gaussian(-30, 4.0).toFixed(1); // R파 높이 (가장 큰 진폭)
-    const s = gaussian(35, 3.5).toFixed(1); // S파 깊이
-    const j = gaussian(-13, 1.5).toFixed(1); // 기선 복귀
+    const q = gaussian(6, 1.0); // Q파 깊이
+    const r = gaussian(-32, 3.0); // R파 높이 (메인 진폭 강화)
+    const s = gaussian(38, 3.0); // S파 깊이
     
-    return `M0 20 h60 q5 -4 10 0 h5 l4 ${q} l6 ${r} l6 ${s} l4 ${j} h5 q5 5 10 0 h80`;
+    // 항상 y=20으로 복귀하기 위한 보정값 (q+r+s+j = 0)
+    const j = -(q + r + s);
+
+    // M0 20 (시작) -> h70 (안정된 시작 기선) -> 파동 -> h90 (안정된 끝 기선)
+    return `M0 20 h70 q5 -4 10 0 h5 l4 ${q.toFixed(1)} l6 ${r.toFixed(1)} l6 ${s.toFixed(1)} l4 ${j.toFixed(1)} h5 q5 5 10 0 h90`;
   }, []);
 
   return (
