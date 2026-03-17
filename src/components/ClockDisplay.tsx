@@ -7,9 +7,13 @@ import { ECGWave } from "@/components/ECGWave";
 export function ClockDisplay() {
   const [time, setTime] = useState<Date | null>(null);
   const [isUTC, setIsUTC] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   // 컴포넌트 마운트 시 타이머 등록 및 설정 불러오기
   useEffect(() => {
+    // 폰트 로드 확인
+    document.fonts.ready.then(() => setIsReady(true));
+
     // 저장된 타임존 설정 불러오기
     const savedTimeZone = localStorage.getItem("clock-timezone");
     if (savedTimeZone === "utc") setIsUTC(true);
@@ -26,7 +30,7 @@ export function ClockDisplay() {
     localStorage.setItem("clock-timezone", utc ? "utc" : "kst");
   };
 
-  if (!time) return <div className="h-40" />;
+  if (!time || !isReady) return <div className="min-h-screen" />;
 
   // 타임존 계산 및 포맷팅
   const displayTime = isUTC ? new Date(time.getTime() + time.getTimezoneOffset() * 60000) : time;
