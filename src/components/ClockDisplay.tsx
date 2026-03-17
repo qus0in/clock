@@ -23,10 +23,17 @@ export function ClockDisplay() {
 
   return (
     <div className="flex w-full flex-col items-center gap-6 px-4 md:gap-10">
-      {/* 테마 연동 카드: 보더 두께를 8px(border-8)로 대폭 강화 */}
-      <div className="flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] bg-card p-10 shadow-2xl border-8 border-zinc-200 transition-colors duration-500 md:p-16 dark:bg-zinc-950 dark:border-zinc-800 dark:shadow-[0_0_60px_-15px_rgba(255,255,255,0.1)]">
-        {/* 가운데 정렬된 타임존 가이드 텍스트 (text-center 명시) */}
-        <h2 className="font-heading text-xs tracking-[0.4em] text-muted-foreground mb-4 font-bold text-center w-full md:text-sm md:mb-10">
+      {/* 테마 연동 카드 */}
+      <div className="relative flex w-full max-w-2xl flex-col items-center rounded-[3.5rem] bg-card p-10 shadow-2xl border-8 border-zinc-200 transition-colors duration-500 md:p-16 dark:bg-zinc-950 dark:border-zinc-800 dark:shadow-[0_0_60px_-15px_rgba(255,255,255,0.1)]">
+        
+        {/* 심장 박동 파장 애니메이션 요소 */}
+        <div className="absolute top-6 flex items-center justify-center">
+          <div className="h-3 w-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+          <div className="absolute h-3 w-3 rounded-full bg-red-500 animate-heartbeat" />
+        </div>
+
+        {/* 가운데 정렬된 타임존 가이드 텍스트 */}
+        <h2 className="font-heading text-xs tracking-[0.4em] text-muted-foreground mt-4 mb-4 font-bold text-center w-full md:text-sm md:mb-10">
           {isUTC ? "UNIVERSAL TIME" : "KOREA STANDARD TIME"}
         </h2>
         
