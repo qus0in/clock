@@ -48,14 +48,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@keyframes heartbeat {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(2.5); opacity: 0; }
+@keyframes soundwave {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
 }
 
-.animate-heartbeat {
-  animation: heartbeat 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+.animate-soundwave {
+  animation: soundwave 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+.delay-700 { animation-delay: 0.7s; }
+.delay-1400 { animation-delay: 1.4s; }
 
 
 @theme inline {
