@@ -8,13 +8,23 @@ export function ClockDisplay() {
   const [time, setTime] = useState<Date | null>(null);
   const [isUTC, setIsUTC] = useState(false);
 
-  // 컴포넌트 마운트 시 타이머 등록
+  // 컴포넌트 마운트 시 타이머 등록 및 설정 불러오기
   useEffect(() => {
+    // 저장된 타임존 설정 불러오기
+    const savedTimeZone = localStorage.getItem("clock-timezone");
+    if (savedTimeZone === "utc") setIsUTC(true);
+    
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setTime(new Date());
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // 타임존 변경 시 로컬스토리지 저장
+  const toggleTimeZone = (utc: boolean) => {
+    setIsUTC(utc);
+    localStorage.setItem("clock-timezone", utc ? "utc" : "kst");
+  };
 
   if (!time) return <div className="h-40" />;
 
@@ -59,13 +69,13 @@ export function ClockDisplay() {
         />
         <button 
           className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${!isUTC ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
-          onClick={() => setIsUTC(false)}
+          onClick={() => toggleTimeZone(false)}
         >
           KST
         </button>
         <button 
           className={`relative z-10 h-10 w-24 rounded-lg font-bold text-xs transition-colors duration-300 ${isUTC ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
-          onClick={() => setIsUTC(true)}
+          onClick={() => toggleTimeZone(true)}
         >
           UTC
         </button>
