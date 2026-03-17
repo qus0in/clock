@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { ECGWave } from "@/components/ECGWave";
 
 // 실시간 시계 컴포넌트 선언
@@ -11,6 +10,7 @@ export function ClockDisplay() {
 
   // 컴포넌트 마운트 시 타이머 등록
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTime(new Date());
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
